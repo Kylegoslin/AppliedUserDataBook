@@ -14,8 +14,8 @@ try {
 
     $host = 'localhost:3306';
     $dbname = 'bookexamples';
-    $user = 'sampleuser';
-    $pass = '3C9038A509BE6145AAD6827B4568AD918BC3DAC0';
+    $user = 'root';
+    $pass = '';
     $DBH = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
     $sql = "INSERT INTO `timinglog` (`pageID`, `att1`, `timing1`, `att2`, `timing2`) 
             VALUES (?,?,?,?,?);";

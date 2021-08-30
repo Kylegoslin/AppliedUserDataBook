@@ -9,7 +9,7 @@ function yesNoLog(){
     $ip = $_POST['ip'];
     try {
         $host = 'localhost';
-        $dbname = 'aa';
+        $dbname = 'bookexamples';
         $user = 'root';
         $pass = '';
         $DBH = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);     

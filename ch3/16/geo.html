@@ -1,22 +1,12 @@
+
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<div>Country: <span id="country"></span></div>
-<div>State: <span id="state"></span></div>
-<div>City: <span id="city"></span></div>
-<div>Latitude: <span id="latitude"></span></div>
-<div>Longitude: <span id="longitude"></span></div>
-<div>IP: <span id="ipv4"></span></div>
 <script>
+var ip = '31.187.2.183';
+var access_key = '34dd357a733f2142f58b1bada9f9f394';
 $.ajax({
-    url: "http://geolocation-db.com/jsonp",
-    jsonpCallback: "callback",
-    dataType: "jsonp",
-    success: function( location ) {
-        $('#country').html(location.country_name);
-        $('#state').html(location.state);
-        $('#city').html(location.city);
-        $('#latitude').html(location.latitude);
-        $('#longitude').html(location.longitude);
-        $('#ipv4').html(location.IPv4);
+    url: 'http://api.ipstack.com/' + ip + '?access_key=' + access_key,
+    success: function(json) {
+        console.log(json.location);
     }
-});		
+});
 </script>

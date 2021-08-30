@@ -1,0 +1,11 @@
+CREATE TABLE `yesnolog` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`articleid` INT(11) NOT NULL DEFAULT '0',
+	`result` VARCHAR(50) NOT NULL DEFAULT '0',
+	`ipadd` VARCHAR(50) NOT NULL DEFAULT '0',
+	PRIMARY KEY (`id`)
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=1
+;
