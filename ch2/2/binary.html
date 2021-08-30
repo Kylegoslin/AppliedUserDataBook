@@ -1,0 +1,43 @@
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+<input type="radio" name="answer" value="Yes"> Yes <br>
+<input type="radio" name="answer" value="No"> No<br>
+<div id="explainwhy">
+    Sorry to hear you were not happy,<br>
+    Would you like to say why?<br>
+    <textarea id="whyanswer" rows="5" cols="50">
+    </textarea>
+<br>
+<button onclick="saveWhyAnswer()">Submit</button>
+</div>
+<script>
+$( "input:radio[name=answer]" ).click(function() {
+
+    var val = $(this).val(); 
+    saveAnswer(val)
+    
+    if(val == 'No'){
+       findOutWhy();
+    }
+});
+
+function saveAnswer(answer){ alert(answer);
+    $.post( "ajax.php", { type: "yesno", articleid: "1221", result: answer })
+    .done(function( data ) {
+        alert('Thank you!');
+    });
+}
+function findOutWhy(){
+   $("#explainwhy").show();
+}
+function saveWhyAnswer(){
+    var answer = document.getElementById('whyanswer').value;
+    $.post( "ajax.php", { type: "whyanswer", articleid: "1221", result: answer })
+    .done(function( data ) {
+        alert('Thank you for your comments!');
+    });
+}
+$(function() {
+    $("#explainwhy").hide();
+});
+ 
+</script>

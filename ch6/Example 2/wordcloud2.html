@@ -1,0 +1,43 @@
+<script src="wordcloud2.js">
+</script>
+<canvas id="my_canvas" style="width:400px; height;300px">
+</canvas>  
+<script>
+var text_string = "I was very happy with the product that I got in the mail. However, the package was handled badly. I am very happy with the product that I got. I will come back again in the future. There was a number of issues with the customer service of this company. I will take my business somewhere else. It was a bad experience. I will never return. I was treated badly by the man on the front desk. This is a great company, I will never go elsewhere.";   
+var common = "i, you, me, is, was, of, a, with, that, in";
+var tokens = text_string.split(/[ .,]/);
+var words = new Array();
+var wordsCount = new Array()
+for (var i = 0; i < tokens.length; i++) {
+   var term = tokens[i].toLowerCase().trim();
+   console.log(term);
+   if(words.indexOf(term) == -1){
+      console.log("does not exist");
+      words.push(term);
+      wordsCount.push(1);
+   }
+   else {
+        var index = words.indexOf(term);
+        var currentValue = wordsCount[index];
+        wordsCount[index] = currentValue + 1;
+   }
+}       
+for (var i = 0; i < words.length; i++) {
+    var term = words[i];
+    var count = wordsCount[i];
+    if(/\S/.test(term) != false){
+       console.log("term: " + term + " count" +count);
+    }
+}
+// viewing the resuls
+var list = new Array();
+for (var i = 0; i < words.length; i++) {
+   var term = words[i];
+   var count = wordsCount[i];
+   
+   if(/\S/.test(term) != false && common.indexOf(term) == -1){
+       list.push([term,count*20]);
+   }
+}
+WordCloud(document.getElementById('my_canvas'), { list: list } );
+</script>

@@ -1,0 +1,133 @@
+<script
+  src="https://code.jquery.com/jquery-3.5.1.min.js"
+  crossorigin="anonymous"></script>
+<link rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+  crossorigin="anonymous">
+<script
+  src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+  crossorigin="anonymous"></script>
+
+<div id="error_message">
+</div>
+<form class="w-25 p-2">
+<div class="form-group">
+   <label for="emailAddress">E-mail address</label>
+   <input type="text" class="form-control" id="emailAddress" 
+      aria-describedby="emailHelp" 
+      placeholder="Enter email">
+   <small id="emailHelp"
+      class="form-text text-muted">We'll never share your email with anyone else.
+   </small>
+</div>
+<div class="form-group">
+   <label for="fullName">Full name</label>
+   <input type="text" class="form-control" id="fullName" 
+      aria-describedby="nameHelp" placeholder="Enter full name">
+   <small id="nameHelp"
+      class="form-text text-muted">Please enter your full name.</small>
+</div>
+<div class="form-group">
+   <label for="serviceRating">How would you rate our service?</label>
+   <select class="form-control" id="serviceRating">
+      <option></option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+   </select>
+</div>
+<div class="form-group">
+   <label for="foodRating">How would you rate our food?</label>
+   <select class="form-control" id="foodRating">
+      <option></option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+   </select>
+</div>
+
+<div class="form-group">
+   <label for="atmosRating">How was the atmosphere in the restaurant?</label>
+   <select class="form-control" id="atmosRating">
+      <option></option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+   </select>
+</div>
+<div class="form-group">
+   <label for="comments">Please tell us about your experience</label>
+   <textarea class="form-control" id="comments" rows="3"></textarea>
+</div>
+<button type="submit" id="submit" class="btn btn-primary">Submit</button>
+</form>
+<div class="modal" id="success" tabindex="-1" role="dialog">
+   <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title">Success!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <p>Thank you for the feedback.</p>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+         </div>
+      </div>
+   </div>
+</div>
+
+<script>
+$( "#submit" ).click(function(event) {
+    event.preventDefault();
+    var error = '';
+
+    var email = $("#emailAddress").val();
+    if(email == ""){
+     error += 'Please enter your e-mail address<br>';
+    }
+    var fullName = $("#fullName").val();
+    if(fullName == ""){
+     error += 'Please enter your full name<br>';
+    } 
+    var serviceRating = $("#serviceRating").val();
+    if(serviceRating == ""){
+     error += 'Please rate the service<br>';
+    }
+    var foodRating = $("#foodRating").val();
+    if(foodRating == ""){
+     error += 'Please rate the food<br>';
+    }
+    var atmosRating = $("#atmosRating").val();
+    if(atmosRating == ""){
+     error += 'Please rate the atmosphere<br>';
+    }
+    var comments = $("#comments").val();
+    if(atmosRating == ""){
+     error += 'Please add a comment<br>';
+    }
+
+    if(error === ""){
+        // if the form if valid
+        $.post( "saveForm.php", { type: "register", email:email, fullName:fullName,
+                                  serviceRating:serviceRating, foodRating:foodRating,
+                                  atmosRating:atmosRating, comments:comments })
+        .done(function( data ) {
+            //alert(data);
+            $("#success").modal();
+        });
+    } else {
+     // if the form is not valid
+     $( "#error_message" ).html(error);
+    }
+});
+</script>

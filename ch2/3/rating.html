@@ -1,0 +1,15 @@
+<script src="https://code.jquery.com/jquery-3.1.0.min.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" 
+      href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.2.0/jquery.rateyo.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.2.0/jquery.rateyo.min.js">
+</script>
+<div id="rateYo"></div>
+<script>
+$(function () {
+    $("#rateYo").rateYo({
+    onSet: function (rating, rateYoInstance) {
+        alert("Rating is set to: " + rating);
+    }
+    });
+});
+</script>

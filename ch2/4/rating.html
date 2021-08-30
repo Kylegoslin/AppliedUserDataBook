@@ -1,0 +1,21 @@
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" 
+      href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.2.0/jquery.rateyo.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.2.0/jquery.rateyo.min.js">
+</script>
+<div id="rateYo"></div>
+<script>
+$(function () {
+    $("#rateYo").rateYo({
+    onSet: function (rating, rateYoInstance) {
+        saveRating(rating);
+    }
+    });
+});
+function saveRating(rating){
+    $.post( "ajax.php", { type: "starrating", articleid: "1221", userrating: rating })
+    .done(function( data ) {
+        alert('Thank you for your rating!');
+    });
+}
+</script>

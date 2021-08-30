@@ -1,0 +1,36 @@
+<head>
+    <script
+    src="http://code.jquery.com/jquery-3.5.1.min.js"
+    crossorigin="anonymous"></script>
+</head>
+<script>
+var sampleSentence = "what a great night I loved the food";
+function stripStopWords(input){
+    var cleaned = '';
+    var stopwords = ["a","about","an","are","as","at","be","by","com","de","en",
+    "for","from","how","i","in","is","it","la","of","on","or",
+    "that","the","this","to","was","what","when","where","who",
+    "will","with","und","the","www"];
+    var termArray = input.split(" ");
+    for (i = 0; i < termArray.length; i++) {
+        var currentTerm = termArray[i];
+        if(stopwords.indexOf(currentTerm) >= 0){
+        } else {
+           cleaned += " " + currentTerm;
+        }
+    
+    }
+    return cleaned;
+}
+</script>
+<div id = "output1">
+    <b>Before Filter:</b>
+</div>
+<div id = "output2">
+    <b>After Filter:</b>
+</div>
+<script>
+$('#output1').append(sampleSentence);
+var cleaned = stripStopWords(sampleSentence);
+$('#output2').append(cleaned);
+</script>

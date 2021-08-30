@@ -1,0 +1,16 @@
+{
+    "name": "kylegoslin/twitterlib",
+    "description": "Sample project",
+    "type": "project",
+    "license": "gnu",
+    "authors": [
+        {
+            "name": "Kyle Goslin",
+            "email": "kylegoslin@itb.ie"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "abraham/twitteroauth": "dev-master"
+    }
+}

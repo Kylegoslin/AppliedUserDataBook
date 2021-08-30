@@ -1,0 +1,12 @@
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+var ip = '193.1.39.1'
+var access_key = '34dd357a733f2142f58b1bada9f9f394';
+$.ajax({
+    url: 'http://api.ipstack.com/' + ip + '?access_key=' + access_key,
+    dataType: 'jsonp',
+    success: function(json) {
+        console.log(json.location.capital);
+    }
+});
+</script>
